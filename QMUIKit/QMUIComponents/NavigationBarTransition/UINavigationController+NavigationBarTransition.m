@@ -262,7 +262,10 @@ QMUISynthesizeIdStrongProperty(qmui_specifiedTextColor, setQmui_specifiedTextCol
     customBar.originalNavigationBar = originBar;
     self.transitionNavigationBar = customBar;
     [self resizeTransitionNavigationBarFrame];
-    
+    customBar.km_isFakeBar = YES;
+    if (@available(iOS 14, *)) {
+        customBar.km_fakeController = self.navigationController;
+    }
     if (!self.navigationController.navigationBarHidden) {
         [self.view addSubview:self.transitionNavigationBar];
     }
